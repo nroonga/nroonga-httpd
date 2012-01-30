@@ -1,0 +1,25 @@
+{
+  "name": "nroonga-httpd",
+  "description": "Yet another groonga http server implementation",
+  "version": "0.0.1",
+  "author": "Yoji Shidara <dara@shidara.net>",
+  "keywords": ["groonga", "nroonga", "fulltext", "search", "database"],
+  "homepage" : "http://nroonga.github.com/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nroonga/nroonga-httpd.git"
+  },
+  "bugs": {
+    "url": "http://github.com/nroonga/nroonga-httpd/issues"
+  },
+  "dependencies": {
+    "nroonga":"",
+    "express":"",
+    "coffee-script":"",
+    "optimist":""
+  },
+  "scripts": {
+    "start": "node_modules/coffee-script/bin/coffee server.coffee",
+  },
+  "main": "./lib/nroonga"
+}
