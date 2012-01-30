@@ -59,3 +59,4 @@ getGroongaDocumentRoot (groongaDocumentRoot) ->
 
   app.listen(argv.p)
   console.log "Server listening at port #{argv.p}."
+  console.log "Document root is #{argv['document-root']}"
