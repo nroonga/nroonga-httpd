@@ -19,7 +19,12 @@
     "optimist":""
   },
   "scripts": {
-    "start": "node_modules/coffee-script/bin/coffee server.coffee",
+    "start": "./bin/nroonga-httpd"
   },
-  "main": "./lib/nroonga"
+  "directories": {
+    "lib" : "./lib/nroonga-httpd"
+  },
+  "bin": {
+    "nroonga-httpd": "./bin/nroonga-httpd"
+  }
 }

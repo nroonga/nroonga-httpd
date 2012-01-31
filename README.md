@@ -5,7 +5,7 @@ nroonga-http is built on the top of [nroonga](http://nroonga.github.com).
 
 ### How to use
 
-    % coffee server.coffee target_database
+    % bin/nroonga-httpd target_database
 
 ### License
 
