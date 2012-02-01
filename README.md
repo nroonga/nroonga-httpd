@@ -1,7 +1,7 @@
 ## nroonga-httpd
 
 Yet another [groonga](http://groonga.org) http server implementation.
-nroonga-http is built on the top of [nroonga](http://nroonga.github.com).
+nroonga-httpd is built on the top of [nroonga](http://nroonga.github.com).
 
 ### How to use
 
