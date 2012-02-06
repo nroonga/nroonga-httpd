@@ -48,10 +48,10 @@ exports.run = ->
     app.use express.static(argv['document-root'])
 
     app.get '/d/:command', (req, res) ->
-      startAt = new Date()
+      startAt = (new Date()).getTime() / 1000
       db.command req.params.command, req.query, (error, data) ->
-        doneAt = new Date()
-        duration = (doneAt - startAt) / 1000
+        doneAt = (new Date()).getTime() / 1000
+        duration = doneAt - startAt
         if error?
           console.log(error)
           res.send([[-1, startAt, duration, error.toString(), []]], 500)
