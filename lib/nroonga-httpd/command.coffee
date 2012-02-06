@@ -31,6 +31,11 @@ exports.run = ->
         'document-root':
           describe: 'document root path'
           default: defaultDocumentRoot
+        v:
+          alias: 'verbose'
+          describe: 'increase verbosity'
+          default: false
+
     argv = opt.argv
 
     if argv.help
@@ -44,7 +49,10 @@ exports.run = ->
       new nroonga.Database()
 
     app = express.createServer()
-    app.use express.logger()
+
+    if argv.v
+      app.use express.logger()
+
     app.use express.static(argv['document-root'])
 
     app.get '/d/:command', (req, res) ->
@@ -59,5 +67,7 @@ exports.run = ->
           res.send([[0, startAt, duration], data])
 
     app.listen(argv.p)
-    console.log "Server listening at port #{argv.p}."
-    console.log "Document root is #{argv['document-root']}"
+
+    if argv.v
+      console.log "Server listening at port #{argv.p}."
+      console.log "Document root is #{argv['document-root']}"
