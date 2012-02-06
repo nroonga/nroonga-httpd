@@ -51,7 +51,7 @@ exports.run = ->
       startAt = new Date()
       db.command req.params.command, req.query, (error, data) ->
         doneAt = new Date()
-        duration = startAt - doneAt
+        duration = (doneAt - startAt) / 1000
         if error?
           console.log(error)
           res.send([[-1, startAt, duration, error.toString(), []]], 500)
