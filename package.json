@@ -1,7 +1,7 @@
 {
   "name": "nroonga-httpd",
   "description": "Yet another groonga http server implementation",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Yoji Shidara <dara@shidara.net>",
   "keywords": ["groonga", "nroonga", "fulltext", "search", "database"],
   "homepage" : "http://nroonga.github.com/",
