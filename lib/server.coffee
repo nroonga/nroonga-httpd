@@ -39,7 +39,7 @@ exports.createServer = (config={}) ->
       doneAt = (new Date()).getTime() / 1000
       duration = doneAt - startAt
       if error?
-        console.log(error)
+        console.error(error)
         res.send([[-1, startAt, duration, error.toString(), []]], 500)
       else
         res.send([[0, startAt, duration], data])

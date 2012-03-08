@@ -70,13 +70,13 @@ exports.run = ->
         process.exit(0)
       else
         if argv.v
-          console.log "Server listening at port #{argv.p} (#{argv.t} workers)."
-          console.log "Document root is #{argv['document-root']}"
+          console.info "Server listening at port #{argv.p} (#{argv.t} workers)."
+          console.info "Document root is #{argv['document-root']}"
 
         for i in [0...argv.t]
           cluster.fork()
         cluster.on 'death', (worker) ->
-          console.log "worker #{worker.pid} died"
+          console.error "worker #{worker.pid} died"
     else
       app = nroongaHttpd.createServer
         dbPath: argv._[0]
