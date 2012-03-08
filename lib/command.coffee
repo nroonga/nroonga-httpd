@@ -62,9 +62,9 @@ parseOptions = (callback) ->
     callback(opt)
 
 exports.run = ->
-  if cluster.isMaster
-    parseOptions (opt) ->
-      argv = opt.argv
+  parseOptions (opt) ->
+    argv = opt.argv
+    if cluster.isMaster
       if argv.help
         opt.showHelp()
         process.exit(0)
@@ -77,14 +77,9 @@ exports.run = ->
           cluster.fork()
         cluster.on 'death', (worker) ->
           console.log "worker #{worker.pid} died"
-  else
-    parseOptions (opt) ->
-      argv = opt.argv
-
-      app = nroongaHttpd.createServer(
+    else
+      app = nroongaHttpd.createServer
         dbPath: argv._[0]
         verbose: argv.v
         documentRoot: argv['document-root']
-      )
-
       app.listen(argv.p)
