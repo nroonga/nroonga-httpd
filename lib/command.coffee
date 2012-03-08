@@ -16,11 +16,10 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 ###
 
-express = require('express')
-nroonga = require('nroonga')
 {spawn} = require('child_process')
 optimist = require('optimist')
 cluster = require('cluster')
+nroongaHttpd = require('./server')
 
 numCPUs = require('os').cpus().length
 
@@ -81,28 +80,11 @@ exports.run = ->
   else
     parseOptions (opt) ->
       argv = opt.argv
-      dbPath = argv._[0]
-      db = if dbPath?
-        new nroonga.Database(dbPath)
-      else
-        new nroonga.Database()
 
-      app = express.createServer()
-
-      if argv.v
-        app.use express.logger()
-
-      app.use express.static(argv['document-root'])
-
-      app.get '/d/:command', (req, res) ->
-        startAt = (new Date()).getTime() / 1000
-        db.command req.params.command, req.query, (error, data) ->
-          doneAt = (new Date()).getTime() / 1000
-          duration = doneAt - startAt
-          if error?
-            console.log(error)
-            res.send([[-1, startAt, duration, error.toString(), []]], 500)
-          else
-            res.send([[0, startAt, duration], data])
+      app = nroongaHttpd.createServer(
+        dbPath: argv._[0]
+        verbose: argv.v
+        documentRoot: argv['document-root']
+      )
 
       app.listen(argv.p)
