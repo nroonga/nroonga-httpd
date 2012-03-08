@@ -18,8 +18,13 @@
     "coffee-script":"",
     "optimist":""
   },
+  "devDependencies": {
+    "mocha": "",
+    "expect.js": ""
+  },
   "scripts": {
-    "start": "./bin/nroonga-httpd"
+    "start": "./bin/nroonga-httpd",
+    "test": "./node_modules/mocha/bin/mocha --colors --reporter spec test/*.test.*"
   },
   "directories": {
     "lib" : "./lib/nroonga-httpd"
