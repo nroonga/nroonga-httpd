@@ -63,5 +63,7 @@ describe 'nroonga-httpd command', ->
           expect(res.statusCode).to.eql(200)
           command.kill()
           done()
+        req.on 'error', ->
+          # do nothing
         req.end()
       , 100
