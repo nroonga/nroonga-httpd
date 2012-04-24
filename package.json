@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "./bin/nroonga-httpd",
-    "test": "./node_modules/mocha/bin/mocha --colors --reporter spec test/*.test.*"
+    "test": "./node_modules/mocha/bin/mocha --compilers coffee:coffee-script --colors --reporter spec test/*.test.*"
   },
   "bin": {
     "nroonga-httpd": "./bin/nroonga-httpd"
